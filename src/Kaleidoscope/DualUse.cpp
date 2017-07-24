@@ -84,7 +84,7 @@ Key DualUse::eventHandlerHook(Key mapped_key, byte row, byte col, uint8_t key_st
     uint8_t spec_index = (mapped_key.raw - ranges::DU_FIRST) >> 8;
     Key new_key = Key_NoKey;
 
-    if (key_toggled_on(key_state)) {
+    if (keyToggledOn(key_state)) {
       bitWrite(pressed_map_, spec_index, 1);
       bitWrite(key_action_needed_map_, spec_index, 1);
       end_time_ = millis() + time_out;
@@ -92,7 +92,7 @@ Key DualUse::eventHandlerHook(Key mapped_key, byte row, byte col, uint8_t key_st
       if (millis() >= end_time_) {
         new_key = specialAction(spec_index);
       }
-    } else if (key_toggled_off(key_state)) {
+    } else if (keyToggledOff(key_state)) {
       if ((millis() >= end_time_) && bitRead(key_action_needed_map_, spec_index)) {
         uint8_t m = mapped_key.raw - ranges::DU_FIRST - (spec_index << 8);
         if (spec_index >= 8)
