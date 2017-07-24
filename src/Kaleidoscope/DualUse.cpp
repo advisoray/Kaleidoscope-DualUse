@@ -50,7 +50,7 @@ void DualUse::pressAllSpecials(byte row, byte col) {
 
     Key new_key = specialAction(spec_index);
     if (new_key.raw != Key_NoKey.raw)
-      handle_keyswitch_event(new_key, row, col, IS_PRESSED | INJECTED);
+      handleKeyswitchEvent(new_key, row, col, IS_PRESSED | INJECTED);
   }
 }
 
@@ -100,7 +100,7 @@ Key DualUse::eventHandlerHook(Key mapped_key, byte row, byte col, uint8_t key_st
 
         Key new_key = { m, KEY_FLAGS };
 
-        handle_keyswitch_event(new_key, row, col, IS_PRESSED | INJECTED);
+        handleKeyswitchEvent(new_key, row, col, IS_PRESSED | INJECTED);
         Keyboard.sendReport();
       } else {
         if (spec_index >= 8) {
