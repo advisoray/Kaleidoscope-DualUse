@@ -74,7 +74,7 @@ Key DualUse::eventHandlerHook(Key mapped_key, byte row, byte col, uint8_t key_st
     return mapped_key;
 
   // If nothing happened, bail out fast.
-  if (!key_is_pressed(key_state) && !key_was_pressed(key_state)) {
+  if (!keyIsPressed(key_state) && !keyWasPressed(key_state)) {
     if (mapped_key.raw < ranges::DU_FIRST || mapped_key.raw > ranges::DU_LAST)
       return mapped_key;
     return Key_NoKey;
@@ -88,7 +88,7 @@ Key DualUse::eventHandlerHook(Key mapped_key, byte row, byte col, uint8_t key_st
       bitWrite(pressed_map_, spec_index, 1);
       bitWrite(key_action_needed_map_, spec_index, 1);
       end_time_ = millis() + time_out;
-    } else if (key_is_pressed(key_state)) {
+    } else if (keyIsPressed(key_state)) {
       if (millis() >= end_time_) {
         new_key = specialAction(spec_index);
       }
