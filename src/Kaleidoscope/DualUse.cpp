@@ -18,6 +18,7 @@
 
 #include <Kaleidoscope.h>
 #include <Kaleidoscope-DualUse.h>
+#include <kaleidoscope/hid.h>
 
 namespace kaleidoscope {
 uint16_t DualUse::key_action_needed_map_;
@@ -101,7 +102,7 @@ Key DualUse::eventHandlerHook(Key mapped_key, byte row, byte col, uint8_t key_st
         Key new_key = { m, KEY_FLAGS };
 
         handleKeyswitchEvent(new_key, row, col, IS_PRESSED | INJECTED);
-        Keyboard.sendReport();
+	hid::sendKeyboardReport();
       } else {
         if (spec_index >= 8) {
           uint8_t target = spec_index - 8;
