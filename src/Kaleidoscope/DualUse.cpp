@@ -102,7 +102,7 @@ Key DualUse::eventHandlerHook(Key mapped_key, byte row, byte col, uint8_t key_st
         Key new_key = { m, KEY_FLAGS };
 
         handleKeyswitchEvent(new_key, row, col, IS_PRESSED | INJECTED);
-	hid::sendKeyboardReport();
+        hid::sendKeyboardReport();
       } else {
         if (spec_index >= 8) {
           uint8_t target = spec_index - 8;
