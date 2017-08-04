@@ -32,11 +32,11 @@ tap and release them in isolation, they will act as another key instead.
 #include <Kaleidoscope-DualUse.h>
 
 // in the keymap:
-CTL_T(Esc), LT(_LAYER, Esc)
+CTL_T(Escape), LT(_LAYER, Escape)
 
 void setup(void) {
-  USE_PLUGINS(&DualUse);
-  
+  Kaleidoscope.use(&DualUse);
+
   Kaleidoscope.setup();
 }
 ```
@@ -56,7 +56,7 @@ The plugin provides a number of macros one can use in keymap definitions:
 > A key that acts as the *left* `Alt` when held, or used in conjunction with
 > other keys, but as `key` when tapped in isolation. The `key` argument must be
 > a plain old key, and can't have any modifiers or anything else applied.
-    
+
 ### `SFT_T(key)`
 
 > A key that acts as the *left* `Shift` when held, or used in conjunction with
