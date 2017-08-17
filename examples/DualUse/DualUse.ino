@@ -55,7 +55,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 };
 
 void setup() {
-  USE_PLUGINS(&DualUse);
+  Kaleidoscope.use(&DualUse);
 
   Kaleidoscope.setup();
 }

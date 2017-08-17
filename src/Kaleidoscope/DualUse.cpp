@@ -61,7 +61,7 @@ DualUse::DualUse(void) {
 }
 
 void DualUse::begin(void) {
-  event_handler_hook_use(eventHandlerHook);
+  Kaleidoscope.useEventHandlerHook(eventHandlerHook);
 }
 
 void DualUse::inject(Key key, uint8_t key_state) {
