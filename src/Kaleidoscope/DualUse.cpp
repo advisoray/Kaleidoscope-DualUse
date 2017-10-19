@@ -92,6 +92,7 @@ Key DualUse::eventHandlerHook(Key mapped_key, byte row, byte col, uint8_t key_st
     } else if (keyIsPressed(key_state)) {
       if (millis() >= end_time_) {
         new_key = specialAction(spec_index);
+        bitWrite(key_action_needed_map_, spec_index, 0);
       }
     } else if (keyToggledOff(key_state)) {
       if ((millis() >= end_time_) && bitRead(key_action_needed_map_, spec_index)) {
