@@ -127,6 +127,10 @@ Key DualUse::eventHandlerHook(Key mapped_key, byte row, byte col, uint8_t key_st
   key_action_needed_map_ = 0;
 
   if (pressed_map_ > (1 << 7)) {
+    if (keyToggledOn(key_state)) {
+      // Update cache for layer changes.
+      Layer.updateLiveCompositeKeymap(row, col);
+    }
     mapped_key = Layer.lookup(row, col);
   }
 
